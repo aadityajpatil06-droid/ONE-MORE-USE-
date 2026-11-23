@@ -1,0 +1,135 @@
+{
+  "info": {
+    "name": "One More Use Platform APIs",
+    "description": "Collection of all REST APIs for testing One More Use full-stack application",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Tanvi Sharma\",\n  \"email\": \"tanvi.sharma@gmail.com\",\n  \"password\": \"password123\",\n  \"location\": \"Kothrud, Pune\"\n}"
+        },
+        "url": { "raw": "http://localhost:8080/api/auth/register", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "auth", "register"] }
+      }
+    },
+    {
+      "name": "2. Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"priya.kulkarni@gmail.com\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": { "raw": "http://localhost:8080/api/auth/login", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "auth", "login"] }
+      }
+    },
+    {
+      "name": "3. Items - Get All Available",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:8080/api/items", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "items"] }
+      }
+    },
+    {
+      "name": "4. Items - Search by Keyword",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:8080/api/items/search?q=wood", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "items", "search"], "query": [{ "key": "q", "value": "wood" }] }
+      }
+    },
+    {
+      "name": "5. Items - Get by ID",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:8080/api/items/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "items", "1"] }
+      }
+    },
+    {
+      "name": "6. Items - Create Listing (JSON)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ownerId\": 1,\n  \"title\": \"Cane Laundry Basket\",\n  \"description\": \"Clean woven cane laundry hamper with lid.\",\n  \"category\": \"Furniture / Storage\",\n  \"itemCondition\": \"Good — minor wear\",\n  \"approxSize\": \"Medium (fits in a bag)\",\n  \"location\": \"Kothrud, Pune\",\n  \"exchangeType\": \"FREE\"\n}"
+        },
+        "url": { "raw": "http://localhost:8080/api/items", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "items"] }
+      }
+    },
+    {
+      "name": "7. AI Suggestions - Analyze Object",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"objectName\": \"Old Wooden Box\",\n  \"condition\": \"Good — minor wear\"\n}"
+        },
+        "url": { "raw": "http://localhost:8080/api/reuse-ideas/analyze", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "reuse-ideas", "analyze"] }
+      }
+    },
+    {
+      "name": "8. Requests - Send Request",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"itemId\": 2,\n  \"requesterId\": 1,\n  \"message\": \"Hi Rohan, I would love to exchange for this study chair!\"\n}"
+        },
+        "url": { "raw": "http://localhost:8080/api/requests", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "requests"] }
+      }
+    },
+    {
+      "name": "9. Requests - Get Incoming for Owner",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:8080/api/requests/incoming/2", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "requests", "incoming", "2"] }
+      }
+    },
+    {
+      "name": "10. Requests - Get Outgoing for Requester",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:8080/api/requests/outgoing/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "requests", "outgoing", "1"] }
+      }
+    },
+    {
+      "name": "11. Requests - Accept Request",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ownerId\": 2,\n  \"status\": \"ACCEPTED\"\n}"
+        },
+        "url": { "raw": "http://localhost:8080/api/requests/1/status", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "requests", "1", "status"] }
+      }
+    },
+    {
+      "name": "12. Users - Get Profile Statistics",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:8080/api/users/1/stats", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "users", "1", "stats"] }
+      }
+    }
+  ]
+}
